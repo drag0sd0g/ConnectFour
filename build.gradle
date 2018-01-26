@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'application'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -16,4 +17,9 @@ dependencies {
 jar {
     baseName = 'connect-four'
     version =  '1.0'
+}
+
+run{
+    mainClassName = "com.game.connect4.Driver"
+    standardInput = System.in
 }
