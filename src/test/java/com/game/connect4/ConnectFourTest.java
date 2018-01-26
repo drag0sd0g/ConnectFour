@@ -12,10 +12,13 @@ import static org.junit.Assert.assertEquals;
 public class ConnectFourTest {
 
     private final ConnectFour connectFour = new ConnectFour();
+
+    //For reflection purposes when trying to modify private members
     private static Field board;
     private static Field totalMovesCount;
 
 
+    //mark the board and totalMovesCount fields as accessible so we can use reflection to set them (only for the full board test)
     @BeforeClass
     public static void setConnectFourInstanceBoardFieldToAccessible() throws NoSuchFieldException {
         board = ConnectFour.class.getDeclaredField("board");

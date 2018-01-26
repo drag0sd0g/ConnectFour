@@ -101,6 +101,13 @@ public class ConnectFour {
         }
     }
 
+    private boolean isWinner(int currentRow, int chosenColumn, Player player) {
+        return isHorizontalWin(currentRow, chosenColumn, player) ||
+                isVerticalWin(currentRow, chosenColumn, player) ||
+                isLeftToRightDiagonalWin(currentRow, chosenColumn, player) ||
+                isRightToLeftDiagonalWin(currentRow, chosenColumn, player);
+    }
+
     private boolean isChosenColumnWithinBoundaries(int chosenColumn) {
         return chosenColumn >= 0 && chosenColumn < COLUMNS;
     }
@@ -219,12 +226,5 @@ public class ConnectFour {
         } else {
             return false;
         }
-    }
-
-    private boolean isWinner(int currentRow, int chosenColumn, Player player) {
-        return isHorizontalWin(currentRow, chosenColumn, player) ||
-                isVerticalWin(currentRow, chosenColumn, player) ||
-                isLeftToRightDiagonalWin(currentRow, chosenColumn, player) ||
-                isRightToLeftDiagonalWin(currentRow, chosenColumn, player);
     }
 }
