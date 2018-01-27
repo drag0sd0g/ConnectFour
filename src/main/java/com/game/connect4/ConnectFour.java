@@ -83,7 +83,6 @@ public class ConnectFour {
         }
 
         if(board[0][chosenColumn] != EMPTY_SLOT){
-            printBoard();
             throw new IllegalArgumentException("This column is already full. Pick another one");
         }
 
@@ -99,12 +98,10 @@ public class ConnectFour {
         if (isBoardFull()) {
             gameOver = Boolean.TRUE;
             drawGame = Boolean.TRUE;
-            printBoard();
             System.out.println("Game over. Board is full, game ended in a draw");
         }
 
         if (isWinner(currentRow, chosenColumn, player)) {
-            printBoard();
             this.winner = player;
             gameOver = Boolean.TRUE;
             System.out.println(player + " wins. Game Over !");
