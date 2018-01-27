@@ -49,7 +49,7 @@ public class ConnectFour {
     }
 
     public void printBoard() {
-        System.out.println("Board looks now like this:");
+        System.out.println("\nBoard looks now like this:");
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
                 System.out.print(board[i][j] + " ");
@@ -147,9 +147,9 @@ public class ConnectFour {
 
         if (symbolCount > WIN_THRESHOLD) {
             System.out.println(String.format("Right to Left Diagonal Win for last position at row=%d and column=%d", row, column));
-            return true;
+            return Boolean.TRUE;
         } else {
-            return false;
+            return Boolean.FALSE;
         }
     }
 
@@ -177,9 +177,9 @@ public class ConnectFour {
 
         if (symbolCount > WIN_THRESHOLD) {
             System.out.println(String.format("Left to Right Diagonal Win for last position at row=%d and column=%d", row, column));
-            return true;
+            return Boolean.TRUE;
         } else {
-            return false;
+            return Boolean.FALSE;
         }
     }
 
@@ -203,9 +203,9 @@ public class ConnectFour {
 
         if (symbolCount > WIN_THRESHOLD) {
             System.out.println(String.format("Vertical Win for last position at row=%d and column=%d", row, column));
-            return true;
+            return Boolean.TRUE;
         } else {
-            return false;
+            return Boolean.FALSE;
         }
     }
 
@@ -229,9 +229,9 @@ public class ConnectFour {
 
         if (symbolCount > WIN_THRESHOLD) {
             System.out.println(String.format("Horizontal Win for last position at row=%d and column=%d", row, column));
-            return true;
+            return Boolean.TRUE;
         } else {
-            return false;
+            return Boolean.FALSE;
         }
     }
 }
