@@ -59,6 +59,16 @@ public class ConnectFour {
         System.out.println();
     }
 
+
+    /**
+     * This method is invoked alternatively by the RED and the GREEN players and it drops the disc at the desired column
+     * on the board. This method will defend against being invoked after the game has ended (draw or with a winner),
+     * against inserting a disc on an invalid or full column, against inserting in a full board and against attempting
+     * to make two consecutive moves by the same player
+     * @param chosenColumn chosen column number where to drop the disc
+     * @param player the current player
+     */
+
     public void play(int chosenColumn, Player player) {
         if (gameOver) {
             throw new IllegalStateException("game is over and no more moves are allowed");
