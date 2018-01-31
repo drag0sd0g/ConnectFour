@@ -74,7 +74,7 @@ public class ConnectFour {
         }
 
         if (!isChosenColumnWithinBoundaries(chosenColumn)) {
-            throw new IllegalArgumentException("you must choose a column in the (0-6) interval");
+            throw new IllegalArgumentException("you must choose a column in the (1-7) interval");
         }
 
         if (currentPlayer == player) {
