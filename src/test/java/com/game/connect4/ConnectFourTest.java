@@ -33,6 +33,31 @@ public class ConnectFourTest {
         connectFour.resetGame();
     }
 
+
+    /**
+     * | | | | | | | |
+     * | | | | | | | |
+     * | | | |R| | | |
+     * | | |R|G| | | |
+     * |G|R|G|R|| | |
+     * |R|G|R|G| | | |
+     */
+    @Test
+    public void testParticularReverseSlashWin(){
+        connectFour.play(0, Player.RED);
+        connectFour.play(1, Player.GREEN);
+        connectFour.play(2, Player.RED);
+        connectFour.play(3, Player.GREEN);
+        connectFour.play(3, Player.RED);
+        connectFour.play(2, Player.GREEN);
+        connectFour.play(1, Player.RED);
+        connectFour.play(0, Player.GREEN);
+        connectFour.play(2, Player.RED);
+        connectFour.play(3, Player.GREEN);
+        connectFour.play(3, Player.RED);
+        assertEquals(connectFour.getWinner(), Player.RED);
+    }
+
     /**
      * | | | | | | | |
      * | | | | | | | |

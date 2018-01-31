@@ -32,7 +32,6 @@ public class ConnectFour {
     }
 
     public void resetGame() {
-        System.out.println("Game state has been reset");
         init();
     }
 
@@ -49,10 +48,10 @@ public class ConnectFour {
     }
 
     public void printBoard() {
-        System.out.println("\nBoard looks now like this:");
         for (int i = 0; i < ROWS; i++) {
+            System.out.print("|");
             for (int j = 0; j < COLUMNS; j++) {
-                System.out.print(board[i][j] + " ");
+                System.out.print((board[i][j] != EMPTY_SLOT ? board[i][j] : " ") + "|");
             }
             System.out.println();
         }
@@ -98,13 +97,14 @@ public class ConnectFour {
         if (isBoardFull()) {
             gameOver = Boolean.TRUE;
             drawGame = Boolean.TRUE;
-            System.out.println("Game over. Board is full, game ended in a draw");
         }
+
+        printBoard();
 
         if (isWinner(currentRow, chosenColumn, player)) {
             this.winner = player;
             gameOver = Boolean.TRUE;
-            System.out.println(player + " wins. Game Over !");
+            System.out.println("Player "+ player.getNumber()+ " "+player.getName()+" wins!");
         }
     }
 
@@ -138,7 +138,7 @@ public class ConnectFour {
         currentColumn = column;
         currentRow = row;
 
-        while (currentRow < ROWS - 1 && currentColumn > 1 &&
+        while (currentRow < ROWS - 1 && currentColumn > 0 &&
                 board[currentRow + 1][currentColumn - 1] == player.getSymbol()) { //count left
             currentRow++;
             currentColumn--;
@@ -146,7 +146,6 @@ public class ConnectFour {
         }
 
         if (symbolCount > WIN_THRESHOLD) {
-            System.out.println(String.format("Right to Left Diagonal Win for last position at row=%d and column=%d", row, column));
             return Boolean.TRUE;
         } else {
             return Boolean.FALSE;
@@ -168,7 +167,7 @@ public class ConnectFour {
         currentColumn = column;
         currentRow = row;
 
-        while (currentRow > 1 && currentColumn > 1 &&
+        while (currentRow > 1 && currentColumn > 0 &&
                 board[currentRow - 1][currentColumn - 1] == player.getSymbol()) { //count left
             currentRow--;
             currentColumn--;
@@ -176,7 +175,6 @@ public class ConnectFour {
         }
 
         if (symbolCount > WIN_THRESHOLD) {
-            System.out.println(String.format("Left to Right Diagonal Win for last position at row=%d and column=%d", row, column));
             return Boolean.TRUE;
         } else {
             return Boolean.FALSE;
@@ -195,14 +193,13 @@ public class ConnectFour {
 
         currentRow = row;
 
-        while (currentRow > 1 &&
+        while (currentRow > 0 &&
                 board[currentRow - 1][column] == player.getSymbol()) { //count up
             currentRow--;
             symbolCount++;
         }
 
         if (symbolCount > WIN_THRESHOLD) {
-            System.out.println(String.format("Vertical Win for last position at row=%d and column=%d", row, column));
             return Boolean.TRUE;
         } else {
             return Boolean.FALSE;
@@ -221,14 +218,13 @@ public class ConnectFour {
 
         currentColumn = column;
 
-        while (currentColumn > 1 &&
+        while (currentColumn > 0 &&
                 board[row][currentColumn - 1] == player.getSymbol()) { //count left
             currentColumn--;
             symbolCount++;
         }
 
         if (symbolCount > WIN_THRESHOLD) {
-            System.out.println(String.format("Horizontal Win for last position at row=%d and column=%d", row, column));
             return Boolean.TRUE;
         } else {
             return Boolean.FALSE;

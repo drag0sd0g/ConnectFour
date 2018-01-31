@@ -9,17 +9,16 @@ public class Driver {
         try {
             ConnectFour connectFour = new ConnectFour();
             int moves = 0;
+            connectFour.printBoard();
             while (!connectFour.isGameOver()) {
                 Player currentPlayer = moves % 2 == 0 ? Player.RED : Player.GREEN;
-                System.out.println(currentPlayer + " Player's Turn. Insert column number (between 0-6) and press enter");
+                System.out.print("Player "+ currentPlayer.getNumber()+ " "+currentPlayer.getName()+" - choose column (1-7):");
                 int chosenColumn = in.nextInt();
                 try {
-                    connectFour.play(chosenColumn, currentPlayer);
+                    connectFour.play(chosenColumn - 1, currentPlayer);
                     moves++;
                 } catch (IllegalStateException | IllegalArgumentException ex) {
                     System.err.println(ex.getMessage());
-                } finally {
-                    connectFour.printBoard();
                 }
             }
         } finally {
