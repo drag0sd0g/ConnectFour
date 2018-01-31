@@ -70,19 +70,19 @@ public class ConnectFour {
 
     public void play(int chosenColumn, Player player) {
         if (gameOver) {
-            throw new IllegalStateException("game is over and no more moves are allowed");
+            throw new IllegalStateException("\ngame is over and no more moves are allowed");
         }
 
         if (!isChosenColumnWithinBoundaries(chosenColumn)) {
-            throw new IllegalArgumentException("you must choose a column in the (1-7) interval");
+            throw new IllegalArgumentException("\nyou must choose a column in the (1-7) interval");
         }
 
         if (currentPlayer == player) {
-            throw new IllegalStateException(player + " cannot make 2 or more moves in a row. Players must take alternate turns");
+            throw new IllegalStateException("\n"+player + " cannot make 2 or more moves in a row. Players must take alternate turns");
         }
 
         if(board[0][chosenColumn] != EMPTY_SLOT){
-            throw new IllegalArgumentException("This column is already full. Pick another one");
+            throw new IllegalArgumentException("\nThis column is already full. Pick another one");
         }
 
         int currentRow = 0;
